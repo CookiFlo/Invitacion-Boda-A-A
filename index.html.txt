@@ -1,77 +1,460 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación de Matrimonio</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Aldy & Ángel — Nos Casamos</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:#f5efe6;
+color:#4c5a56;
+overflow-x:hidden;
+}
+
+h1,h2{
+font-family:"Playfair Display";
+}
+
+nav{
+position:fixed;
+bottom:0;
+width:100%;
+background:#ffffffdd;
+display:flex;
+justify-content:space-around;
+padding:10px;
+backdrop-filter:blur(8px);
+z-index:99;
+}
+
+nav button{
+background:none;
+border:none;
+font-size:14px;
+color:#5b7d79;
+cursor:pointer;
+}
+
+section{
+display:none;
+min-height:100vh;
+padding:60px 20px 120px;
+text-align:center;
+}
+
+.active{
+display:block;
+}
+
+/* SOBRE */
+
+.envelope-container{
+
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+
+}
+
+.envelope{
+
+width:280px;
+height:180px;
+background:#efe7da;
+position:relative;
+cursor:pointer;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+border-radius:6px;
+
+}
+
+.flap{
+
+position:absolute;
+width:0;
+height:0;
+border-left:140px solid transparent;
+border-right:140px solid transparent;
+border-bottom:90px solid #d6e3df;
+top:-90px;
+transition:.8s;
+
+}
+
+.open .flap{
+
+transform:rotateX(180deg);
+transform-origin:bottom;
+
+}
+
+.message{
+
+opacity:0;
+transition:1s;
+margin-top:20px;
+
+}
+
+.open .message{
+
+opacity:1;
+
+}
+
+/* tarjetas */
+
+.card{
+
+background:white;
+padding:25px;
+border-radius:15px;
+max-width:600px;
+margin:auto;
+box-shadow:0 6px 18px rgba(0,0,0,.1);
+
+}
+
+.flower{
+
+font-size:28px;
+opacity:.5;
+
+}
+
+input,textarea{
+
+width:90%;
+padding:10px;
+margin:10px;
+border-radius:8px;
+border:1px solid #ccc;
+
+}
+
+button.action{
+
+background:#6f9e98;
+border:none;
+color:white;
+padding:10px 20px;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+.photo{
+
+width:100%;
+border-radius:15px;
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <!-- SOBRE -->
-  <div class="envelope" id="envelope">
-    <div class="flap"></div>
-  </div>
+<!-- SOBRE -->
 
-  <!-- CONTENIDOS -->
-  <div class="sections" id="sections">
+<section id="inicio" class="active">
 
-    <!-- CEREMONIA -->
-    <section class="section">
-      <h1>Ceremonia de Flor & Juan</h1>
-      <p>💌 ¡Estamos emocionados de compartir este momento con vos!</p>
-      <div class="countdown">
-        <p>Faltan <span id="daysLeft"></span> días para nuestra boda</p>
-      </div>
-      <p>📍 Lugar: Jardín de los Sueños</p>
-      <p>🗓 Fecha: 25 de Febrero, 2026</p>
-      <p>⏰ Hora: 17:00</p>
-      <button class="next-btn">Siguiente</button>
-    </section>
+<div class="envelope-container">
 
-    <!-- CANCIÓN -->
-    <section class="section">
-      <h2>La canción que no puede faltar</h2>
-      <p>¡Queremos escuchar tu favorita en la fiesta!</p>
-      <input type="text" id="songInput" placeholder="Escribe tu canción favorita">
-      <button id="submitSong" class="next-btn">Guardar y seguir</button>
-    </section>
+<div class="envelope" onclick="openEnvelope(this)">
 
-    <!-- CONFIRMACIÓN -->
-    <section class="section">
-      <h2>Confirmación de asistencia</h2>
-      <p>Por favor indicá si vas a asistir</p>
-      <button class="rsvp-btn" data-response="Sí">Sí, voy</button>
-      <button class="rsvp-btn" data-response="No">No puedo asistir</button>
-      <p id="rsvpResult"></p>
-    </section>
+<div class="flap"></div>
 
-    <!-- DRESS CODE -->
-    <section class="section">
-      <h2>Dress Code</h2>
-      <p>¡Queremos verte elegante y en nuestros colores!</p>
-      <div class="colors">
-        <div class="color-box" style="background:#d76a6a;"></div>
-        <div class="color-box" style="background:#f7d6c1;"></div>
-        <div class="color-box" style="background:#8ac6d1;"></div>
-      </div>
-      <p>Por favor elegí tus tonos favoritos de estos colores.</p>
-      <button class="next-btn">Siguiente</button>
-    </section>
+<div class="message">
 
-    <!-- REGALOS -->
-    <section class="section">
-      <h2>Regalos</h2>
-      <p>Si querés hacernos un regalo, podés hacerlo a través de la cuenta bancaria:</p>
-      <div class="gift-box">
-        <p>IBAN: <strong>ES12 3456 7890 1234 5678 9012</strong></p>
-        <p>¡Muchísimas gracias por acompañarnos en este momento tan especial!</p>
-      </div>
-      <button class="next-btn">Siguiente</button>
-    </section>
+<h1>🌸 Nos Casamos 🌸</h1>
 
-  </div>
+<h2>Aldy & Ángel</h2>
 
-  <script src="script.js"></script>
+<p>15 de Enero 2027</p>
+
+<p>Tocá abajo para descubrir nuestra invitación</p>
+
+<button class="action" onclick="go('lugar')">Abrir</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LUGAR -->
+
+<section id="lugar">
+
+<div class="card">
+
+<div class="flower">🌿🌸🌿</div>
+
+<h2>El Lugar</h2>
+
+<p>
+
+Residencia Janos<br>
+Acceso Este
+
+</p>
+
+<a href="https://maps.google.com" target="_blank">
+
+<button class="action">
+
+Cómo llegar
+
+</button>
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- CUENTA REGRESIVA -->
+
+<section id="contador">
+
+<div class="card">
+
+<h2>Cuenta regresiva</h2>
+
+<h1 id="countdown"></h1>
+
+<p>para nuestro gran día 💚</p>
+
+</div>
+
+</section>
+
+
+<!-- MUSICA -->
+
+<section id="musica">
+
+<div class="card">
+
+<h2>Música</h2>
+
+<p>
+
+¿Qué canción no puede faltar?
+
+</p>
+
+<textarea placeholder="Escribí tu canción favorita"></textarea>
+
+<button class="action">
+
+Enviar
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- DRESS CODE -->
+
+<section id="dress">
+
+<div class="card">
+
+<h2>Dress Code</h2>
+
+<p>
+
+Colores sugeridos:
+
+</p>
+
+<h3>
+
+Beige · Blanco · Verde Azulado
+
+</h3>
+
+<p>
+
+Elegante y natural 🌿
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- REGALOS -->
+
+<section id="regalos">
+
+<div class="card">
+
+<h2>Regalos</h2>
+
+<p>
+
+Tu presencia es lo más importante ❤️
+
+Si querés ayudarnos:
+
+</p>
+
+<p>
+
+CBU:
+
+<br>
+
+<strong>
+
+0000003100000000000000
+
+</strong>
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONFIRMACION -->
+
+<section id="confirmar">
+
+<div class="card">
+
+<h2>Confirmar asistencia</h2>
+
+<input placeholder="Nombre">
+
+<textarea placeholder="¿Venís o no venís?"></textarea>
+
+<button class="action">
+
+Enviar Confirmación
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FOTO FINAL -->
+
+<section id="final">
+
+<div class="card">
+
+<h2>Te esperamos 💐</h2>
+
+<img class="photo"
+
+src="https://images.unsplash.com/photo-1520854221256-17451cc331bf"
+
+>
+
+<p>
+
+¡Estamos felices de compartirlo con vos!
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- MENU -->
+
+<nav>
+
+<button onclick="go('inicio')">Inicio</button>
+
+<button onclick="go('lugar')">Lugar</button>
+
+<button onclick="go('contador')">Días</button>
+
+<button onclick="go('musica')">Música</button>
+
+<button onclick="go('dress')">Dress</button>
+
+<button onclick="go('regalos')">Regalos</button>
+
+<button onclick="go('confirmar')">RSVP</button>
+
+<button onclick="go('final')">Foto</button>
+
+</nav>
+
+
+<script>
+
+function openEnvelope(el){
+
+el.classList.add("open");
+
+}
+
+
+function go(id){
+
+document.querySelectorAll("section")
+
+.forEach(s=>s.classList.remove("active"));
+
+document.getElementById(id)
+
+.classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
+
+/* CUENTA REGRESIVA */
+
+const weddingDate=new Date("January 15 2027 00:00:00");
+
+function updateCountdown(){
+
+const now=new Date();
+
+const diff=weddingDate-now;
+
+const days=Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("countdown")
+
+.innerHTML=days+" días";
+
+}
+
+setInterval(updateCountdown,1000);
+
+updateCountdown();
+
+</script>
+
 </body>
 </html>
