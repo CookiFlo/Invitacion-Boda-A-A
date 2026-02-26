@@ -1,0 +1,110 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: #faf7f5;
+  overflow: hidden;
+}
+
+/* SOBRE */
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 100px auto;
+  background: #e7cfc7;
+  border: 2px solid #d6a39a;
+  cursor: pointer;
+}
+.flap {
+  width: 100%;
+  height: 100%;
+  background: #d76a6a;
+  clip-path: polygon(50% 0%, 0 100%, 100% 100%);
+  transform-origin: top;
+  transition: transform 0.8s;
+}
+
+/* CONTENIDOS */
+.sections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: none;
+}
+
+.section {
+  padding: 40px;
+  min-height: 100vh;
+  background: #fff;
+  border-bottom: 2px solid #eee;
+  text-align: center;
+}
+
+.section h1, .section h2 {
+  color: #d76a6a;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  width: 70%;
+  margin-bottom: 20px;
+  border: 2px solid #d76a6a;
+  border-radius: 5px;
+}
+
+button {
+  padding: 12px 24px;
+  background: #d76a6a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #c55a5a;
+}
+
+/* COLORS - Dress Code */
+.colors {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 15px;
+}
+
+.color-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  border: 2px solid #d76a6a;
+}
+
+/* Gift box */
+.gift-box {
+  background: #f7d6c1;
+  border: 2px solid #d76a6a;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+}
+.gift-box strong {
+  color: #d76a6a;
+  font-size: 18px;
+}

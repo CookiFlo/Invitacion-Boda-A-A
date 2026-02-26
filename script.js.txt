@@ -1,0 +1,49 @@
+const envelope = document.getElementById("envelope");
+const flap = envelope.querySelector(".flap");
+const sections = document.getElementById("sections");
+const daysLeftSpan = document.getElementById("daysLeft");
+
+// Función para calcular días faltantes
+function updateCountdown() {
+  const weddingDate = new Date("2026-02-25");
+  const today = new Date();
+  const diffTime = weddingDate - today;
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  daysLeftSpan.textContent = diffDays;
+}
+
+// Abrir sobre
+envelope.addEventListener("click", () => {
+  flap.style.transform = "rotateX(180deg)";
+  setTimeout(() => {
+    envelope.style.display = "none";
+    sections.style.display = "block";
+    sections.scrollTo(0, 0);
+    updateCountdown();
+  }, 800);
+});
+
+// Botones para avanzar entre secciones
+document.querySelectorAll(".next-btn").forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    const nextPosition = (index + 1) * window.innerHeight;
+    sections.scrollTo({ top: nextPosition, behavior: "smooth" });
+  });
+});
+
+// Guardar canción
+const submitSong = document.getElementById("submitSong");
+const songInput = document.getElementById("songInput");
+
+submitSong.addEventListener("click", () => {
+  const song = songInput.value.trim();
+  if(song) alert(¡Gracias! Agregaste la canción: ${song});
+});
+
+// RSVP
+document.querySelectorAll(".rsvp-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const response = btn.dataset.response;
+    document.getElementById("rsvpResult").textContent = Tu respuesta: ${response};
+  });
+});

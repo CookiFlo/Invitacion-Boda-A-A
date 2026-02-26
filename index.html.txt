@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Matrimonio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- SOBRE -->
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+  </div>
+
+  <!-- CONTENIDOS -->
+  <div class="sections" id="sections">
+
+    <!-- CEREMONIA -->
+    <section class="section">
+      <h1>Ceremonia de Flor & Juan</h1>
+      <p>💌 ¡Estamos emocionados de compartir este momento con vos!</p>
+      <div class="countdown">
+        <p>Faltan <span id="daysLeft"></span> días para nuestra boda</p>
+      </div>
+      <p>📍 Lugar: Jardín de los Sueños</p>
+      <p>🗓 Fecha: 25 de Febrero, 2026</p>
+      <p>⏰ Hora: 17:00</p>
+      <button class="next-btn">Siguiente</button>
+    </section>
+
+    <!-- CANCIÓN -->
+    <section class="section">
+      <h2>La canción que no puede faltar</h2>
+      <p>¡Queremos escuchar tu favorita en la fiesta!</p>
+      <input type="text" id="songInput" placeholder="Escribe tu canción favorita">
+      <button id="submitSong" class="next-btn">Guardar y seguir</button>
+    </section>
+
+    <!-- CONFIRMACIÓN -->
+    <section class="section">
+      <h2>Confirmación de asistencia</h2>
+      <p>Por favor indicá si vas a asistir</p>
+      <button class="rsvp-btn" data-response="Sí">Sí, voy</button>
+      <button class="rsvp-btn" data-response="No">No puedo asistir</button>
+      <p id="rsvpResult"></p>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="section">
+      <h2>Dress Code</h2>
+      <p>¡Queremos verte elegante y en nuestros colores!</p>
+      <div class="colors">
+        <div class="color-box" style="background:#d76a6a;"></div>
+        <div class="color-box" style="background:#f7d6c1;"></div>
+        <div class="color-box" style="background:#8ac6d1;"></div>
+      </div>
+      <p>Por favor elegí tus tonos favoritos de estos colores.</p>
+      <button class="next-btn">Siguiente</button>
+    </section>
+
+    <!-- REGALOS -->
+    <section class="section">
+      <h2>Regalos</h2>
+      <p>Si querés hacernos un regalo, podés hacerlo a través de la cuenta bancaria:</p>
+      <div class="gift-box">
+        <p>IBAN: <strong>ES12 3456 7890 1234 5678 9012</strong></p>
+        <p>¡Muchísimas gracias por acompañarnos en este momento tan especial!</p>
+      </div>
+      <button class="next-btn">Siguiente</button>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
