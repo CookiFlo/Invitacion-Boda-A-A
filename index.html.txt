@@ -2,459 +2,161 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aldy & Ángel — Nos Casamos</title>
+<title>Aldana & Angel</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<style>
-
-body{
-margin:0;
-font-family:Poppins;
-background:#f5efe6;
-color:#4c5a56;
-overflow-x:hidden;
-}
-
-h1,h2{
-font-family:"Playfair Display";
-}
-
-nav{
-position:fixed;
-bottom:0;
-width:100%;
-background:#ffffffdd;
-display:flex;
-justify-content:space-around;
-padding:10px;
-backdrop-filter:blur(8px);
-z-index:99;
-}
-
-nav button{
-background:none;
-border:none;
-font-size:14px;
-color:#5b7d79;
-cursor:pointer;
-}
-
-section{
-display:none;
-min-height:100vh;
-padding:60px 20px 120px;
-text-align:center;
-}
-
-.active{
-display:block;
-}
-
-/* SOBRE */
-
-.envelope-container{
-
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-
-}
-
-.envelope{
-
-width:280px;
-height:180px;
-background:#efe7da;
-position:relative;
-cursor:pointer;
-box-shadow:0 10px 20px rgba(0,0,0,.2);
-border-radius:6px;
-
-}
-
-.flap{
-
-position:absolute;
-width:0;
-height:0;
-border-left:140px solid transparent;
-border-right:140px solid transparent;
-border-bottom:90px solid #d6e3df;
-top:-90px;
-transition:.8s;
-
-}
-
-.open .flap{
-
-transform:rotateX(180deg);
-transform-origin:bottom;
-
-}
-
-.message{
-
-opacity:0;
-transition:1s;
-margin-top:20px;
-
-}
-
-.open .message{
-
-opacity:1;
-
-}
-
-/* tarjetas */
-
-.card{
-
-background:white;
-padding:25px;
-border-radius:15px;
-max-width:600px;
-margin:auto;
-box-shadow:0 6px 18px rgba(0,0,0,.1);
-
-}
-
-.flower{
-
-font-size:28px;
-opacity:.5;
-
-}
-
-input,textarea{
-
-width:90%;
-padding:10px;
-margin:10px;
-border-radius:8px;
-border:1px solid #ccc;
-
-}
-
-button.action{
-
-background:#6f9e98;
-border:none;
-color:white;
-padding:10px 20px;
-border-radius:10px;
-cursor:pointer;
-
-}
-
-.photo{
-
-width:100%;
-border-radius:15px;
-
-}
-
-</style>
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- SOBRE -->
+<!-- MÚSICA -->
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mp3">
+</audio>
 
-<section id="inicio" class="active">
+<button id="btnMusica" onclick="toggleMusica()">🎵 Música</button>
 
-<div class="envelope-container">
+<a href="https://wa.me/549XXXXXXXXXX" class="btn-whatsapp" target="_blank">💬</a>
 
-<div class="envelope" onclick="openEnvelope(this)">
+<div class="app">
 
-<div class="flap"></div>
-
-<div class="message">
-
-<h1>🌸 Nos Casamos 🌸</h1>
-
-<h2>Aldy & Ángel</h2>
-
-<p>15 de Enero 2027</p>
-
-<p>Tocá abajo para descubrir nuestra invitación</p>
-
-<button class="action" onclick="go('lugar')">Abrir</button>
-
-</div>
-
-</div>
-
-</div>
-
+<!-- INTRO -->
+<section id="intro">
+  <div class="envelope-container">
+    <img src="img.sobresinfondo.png" class="envelope">
+    <div class="seal" onclick="abrirSobre()">
+      <img src="img.sobreicono.png" class="seal-img">
+    </div>
+  </div>
 </section>
 
+<!-- HOJA 1 -->
+<section id="hoja1" class="hidden">
+  <div class="pantalla1">
+    <img src="img.portada.jpg" class="imagen-full">
+    <div class="flecha" onclick="mostrarHoja(2)">⌄</div>
+  </div>
+</section>
 
-<!-- LUGAR -->
+<!-- HOJA 2 -->
+<section id="hoja2" class="hidden">
+  <div class="contador-section">
+    <img src="img.contador.jpg" class="fondo-contador">
+    <div class="overlay-contador"></div>
 
-<section id="lugar">
+    <div class="contenido-contador">
+      <h2 class="titulo-contador">FALTAN</h2>
 
-<div class="card">
+      <div class="contador">
+        <div class="bloque"><span id="dias">00</span><p>Días</p></div>
+        <div class="bloque"><span id="horas">00</span><p>Hr</p></div>
+        <div class="bloque"><span id="minutos">00</span><p>Min</p></div>
+        <div class="bloque"><span id="segundos">00</span><p>Seg</p></div>
+      </div>
+    </div>
 
-<div class="flower">🌿🌸🌿</div>
+    <div class="flecha" onclick="mostrarHoja(3)">⌄</div>
+  </div>
+</section>
 
-<h2>El Lugar</h2>
+<!-- HOJA 3 -->
+<section id="hoja3" class="hidden">
+  <div class="pantalla3">
+    <img src="img.ceremonia.jpg" class="imagen-full">
 
-<p>
+    <a href="https://www.google.com/maps?q=Belgrano+327,+Morón,+Buenos+Aires"
+    target="_blank" class="btn-maps">Cómo llegar</a>
 
-Residencia Janos<br>
-Acceso Este
+    <div class="flecha lateral derecha" onclick="mostrarHoja(4)">›</div>
+  </div>
+</section>
 
-</p>
+<!-- HOJA 4 -->
+<section id="hoja4" class="hidden">
+  <div class="pantalla4">
+    <img src="img.salon.jpg" class="imagen-full">
 
-<a href="https://maps.google.com" target="_blank">
+    <a href="https://www.google.com/maps?q=Au+Acceso+Oeste+31,+Paso+del+Rey,+Buenos+Aires"
+    target="_blank" class="btn-maps">Cómo llegar</a>
 
-<button class="action">
+    <div class="flecha lateral izquierda" onclick="mostrarHoja(3)">‹</div>
+    <div class="flecha lateral derecha" onclick="mostrarHoja(5)">›</div>
+  </div>
+</section>
 
-Cómo llegar
+<!-- HOJA 5 -->
+<section id="hoja5" class="hidden">
+  <div class="pantalla4">
+    <img src="img.foto1.jpg" class="imagen-full">
 
-</button>
+    <div class="flecha lateral izquierda" onclick="mostrarHoja(4)">‹</div>
+    <div class="flecha lateral derecha" onclick="mostrarHoja(6)">›</div>
+  </div>
+</section>
 
-</a>
+<!-- HOJA 6 -->
+<section id="hoja6" class="hidden">
+  <div class="pantalla4">
+    <img src="img.foto2.jpg" class="imagen-full">
+
+    <div class="flecha lateral izquierda" onclick="mostrarHoja(5)">‹</div>
+    <div class="flecha lateral derecha" onclick="mostrarHoja(7)">›</div>
+  </div>
+</section>
+
+<!-- HOJA 7 -->
+<section id="hoja7" class="hidden">
+  <div class="pantalla4">
+    <img src="img.foto3.jpg" class="imagen-full">
+
+    <div class="flecha lateral izquierda" onclick="mostrarHoja(6)">‹</div>
+    <div class="flecha lateral derecha" onclick="mostrarHoja(8)">›</div>
+  </div>
+</section>
+
+<!-- HOJA 8 -->
+<section id="hoja8" class="hidden">
+  <div class="pantalla4">
+    <img src="img.foto4.jpg" class="imagen-full">
+
+    <div class="flecha lateral izquierda" onclick="mostrarHoja(7)">‹</div>
+    <div class="flecha lateral derecha" onclick="mostrarHoja(9)">›</div>
+  </div>
+</section>
+
+<!-- HOJA 9 -->
+<section id="hoja9" class="hidden">
+  <div class="pantalla4">
+    <img src="img.foto5.jpg" class="imagen-full">
+
+    <a href="https://invitados.janoseventos.com/?q=NTI3MjB8MTc4NjcxMjcxOQ.3-yVQD9W3qOyYyZZA4LGwlFIvejZozF3EM0dlL-VrOA"
+    target="_blank"
+    class="btn-maps"
+    style="bottom:35%;">
+    Confirmar asistencia
+    </a>
+
+    <div class="flecha lateral izquierda" onclick="mostrarHoja(8)">‹</div>
+    <div class="flecha lateral derecha" onclick="mostrarHoja(10)">›</div>
+  </div>
+</section>
+
+<!-- HOJA 10 -->
+<section id="hoja10" class="hidden">
+  <div class="pantalla4">
+    <img src="img.foto6.jpg" class="imagen-full">
+
+    <div class="flecha lateral izquierda" onclick="mostrarHoja(9)">‹</div>
+  </div>
+</section>
 
 </div>
 
-</section>
-
-
-<!-- CUENTA REGRESIVA -->
-
-<section id="contador">
-
-<div class="card">
-
-<h2>Cuenta regresiva</h2>
-
-<h1 id="countdown"></h1>
-
-<p>para nuestro gran día 💚</p>
-
-</div>
-
-</section>
-
-
-<!-- MUSICA -->
-
-<section id="musica">
-
-<div class="card">
-
-<h2>Música</h2>
-
-<p>
-
-¿Qué canción no puede faltar?
-
-</p>
-
-<textarea placeholder="Escribí tu canción favorita"></textarea>
-
-<button class="action">
-
-Enviar
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- DRESS CODE -->
-
-<section id="dress">
-
-<div class="card">
-
-<h2>Dress Code</h2>
-
-<p>
-
-Colores sugeridos:
-
-</p>
-
-<h3>
-
-Beige · Blanco · Verde Azulado
-
-</h3>
-
-<p>
-
-Elegante y natural 🌿
-
-</p>
-
-</div>
-
-</section>
-
-
-<!-- REGALOS -->
-
-<section id="regalos">
-
-<div class="card">
-
-<h2>Regalos</h2>
-
-<p>
-
-Tu presencia es lo más importante ❤️
-
-Si querés ayudarnos:
-
-</p>
-
-<p>
-
-CBU:
-
-<br>
-
-<strong>
-
-0000003100000000000000
-
-</strong>
-
-</p>
-
-</div>
-
-</section>
-
-
-<!-- CONFIRMACION -->
-
-<section id="confirmar">
-
-<div class="card">
-
-<h2>Confirmar asistencia</h2>
-
-<input placeholder="Nombre">
-
-<textarea placeholder="¿Venís o no venís?"></textarea>
-
-<button class="action">
-
-Enviar Confirmación
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- FOTO FINAL -->
-
-<section id="final">
-
-<div class="card">
-
-<h2>Te esperamos 💐</h2>
-
-<img class="photo"
-
-src="https://images.unsplash.com/photo-1520854221256-17451cc331bf"
-
->
-
-<p>
-
-¡Estamos felices de compartirlo con vos!
-
-</p>
-
-</div>
-
-</section>
-
-
-<!-- MENU -->
-
-<nav>
-
-<button onclick="go('inicio')">Inicio</button>
-
-<button onclick="go('lugar')">Lugar</button>
-
-<button onclick="go('contador')">Días</button>
-
-<button onclick="go('musica')">Música</button>
-
-<button onclick="go('dress')">Dress</button>
-
-<button onclick="go('regalos')">Regalos</button>
-
-<button onclick="go('confirmar')">RSVP</button>
-
-<button onclick="go('final')">Foto</button>
-
-</nav>
-
-
-<script>
-
-function openEnvelope(el){
-
-el.classList.add("open");
-
-}
-
-
-function go(id){
-
-document.querySelectorAll("section")
-
-.forEach(s=>s.classList.remove("active"));
-
-document.getElementById(id)
-
-.classList.add("active");
-
-window.scrollTo(0,0);
-
-}
-
-
-/* CUENTA REGRESIVA */
-
-const weddingDate=new Date("January 15 2027 00:00:00");
-
-function updateCountdown(){
-
-const now=new Date();
-
-const diff=weddingDate-now;
-
-const days=Math.floor(diff/(1000*60*60*24));
-
-document.getElementById("countdown")
-
-.innerHTML=days+" días";
-
-}
-
-setInterval(updateCountdown,1000);
-
-updateCountdown();
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
